@@ -1,0 +1,2392 @@
+Gemini נטפרי
+‫Gem בהתאמה אישית
+פרונטאנד (Frontend) – צד הלקוח:
+זה כל מה שהמשתמש רואה בעיניים ונוגע בו במסך.
+
+האחריות שלו: לעצב את האתר, להציג את הכפתורים, הטפסים, התמונות והטקסטים, ולדאוג שהכל ייראה יפה ויגיב מהר כשלוחצים על משהו.
+
+משל פשוט: כמו האולם של המסעדה — השולחנות, הכסאות, התפריט והמלצר שמקבל ממך את ההזמנה.
+
+באקאנד (Backend) – צד השרת:
+זה כל המנוע שפועל מאחורי הקלעים ושהמשתמש לא רואה בכלל.
+
+האחריות שלו: לעבד את המידע, לנהל את בסיס הנתונים (איפה ששמורים כל החשבונות והנתונים), ולדאוג לאבטחה ולחישובים המורכבים.
+
+משל פשוט: כמו המטבח של המסעדה — הטבחים שמכינים את המזון, המחסן שבו שמורים המצרכים, והניהול של ההזמנות.
+
+Gemini נטפרי
+‫Gem בהתאמה אישית
+דפדפן ושרת מדברים ביניהם כמו מכתבים בדואר: אחד מבקש, והשני עונה.
+
+הנה מחזור ה"בקשה והתשובה" (Request-Response) צעד אחר צעד:
+
+שלב 1: הבקשה (Request)
+
+הדפדפן שולח הודעה לשרת.
+
+משל: אתה מבקש מהמלצר: "אפשר לקבל תפריט, בבקשה?".
+
+שלב 2: העיבוד בשרת
+
+השרת מקבל את ההודעה, בודק מה ביקשת, מכין את המידע ומודא שהכל תקין.
+
+משל: המלצר הולך לדלפק ולוקח את התפריט בשבילך.
+
+שלב 3: התשובה (Response)
+
+השרת שולח בחזרה לדפדפן הודעה עם המידע המבוקש (או הודעה שמשהו לא נמצא).
+
+משל: המלצר חוזר ומגיש לך את התפריט לשולחן.
+
+שלב 4: הצגה במסך
+
+הדפדפן מקבל את התשובה ומציג אותה בצורה יפה על המסך.
+
+Gemini נטפרי
+‫Gem בהתאמה אישית
+מה זה API?
+API (ראשי תיבות של Application Programming Interface) הוא כמו שליח או מגשר שמאפשר לשתי מערכות שונות לדבר זו עם זו, לבקש בקשות ולקבל מידע – בלי ששתיהן צריכות להכיר את כל הסודות הפנימיים אחת של השנייה.
+
+2 דוגמאות מהעולם האמיתי (ללא קשר לתכנות):
+מלצר במסעדה:
+
+אתה (הלקוח) יושב בשולחן, והטבח נמצא במטבח.
+
+אתה לא נכנס למטבח לבשל בעצמך, והטבח לא יוצא אליך.
+
+המלצר הוא ה-API: הוא מקבל ממך את ההזמנה (הבקשה), מעביר אותה למטבח, ומחזיר לך את המנה המוכנה (התשובה).
+
+שלט רחוק של טלוויזיה:
+
+אתה רוצה להגביר את הווליום או להחליף ערוץ.
+
+אתה לא פותח את הטלוויזיה ומלחים חוטים בפנים.
+
+השלט הוא ה-API: הוא מספק לך כפתורים פשוטים (ממשק). בלחיצה על כפתור, השלט שולח הוראה מוכנה מראש לטלוויזיה והיא מבצעת אותה.
+
+איך אותו רעיון עובד בפיתוח אתרים (Web Development)?
+באתר אינטרנט, ה-API הוא הגשר שמאפשר לפתרונות ולאתרים שונים לתקשר ביניהם בצורה בטוחה ומסודרת:
+
+דוגמה מעשית: כשאת מזמינה מוצר באתר חנות ומגיעה לשלב התשלום, האתר לא מחזיק את כרטיסי האשראי אצלו. הוא פונה דרך API לחברת האשראי, שואל אותה "האם התשלום אושר?", והיא מחזירה לו תשובה של "כן" או "לא".
+
+ה-API מאפשר לאתר לקבל מידע מוכן (כמו מזג אוויר, מפות, או אישור תשלום) ממערכת חיצונית בקלות, בלי לבנות הכל מאפס.
+
+Gemini נטפרי
+‫Gem בהתאמה אישית
+מה ההבדל בין HTML ל-JSON?
+
+HTML (שפת עיצוב והצגה):
+מיועדת בשביל בני אדם. היא מתארת ממה הדף מורכב ואיך הוא צריך להיראות על המסך (כותרות, פסקאות, כפתורים ותמונות).
+
+משל פשוט: כמו מכתב מעוצב או ספר. יש בו טקסט, כותרות ועיצוב שהעין שלנו יכולה לקרוא יפה.
+
+JSON (פורמט להעברת נתונים בלבד):
+מיועד בשביל מחשבים ותוכנות. הוא מכיל רק את המידע הנקי (נתונים) בצורת מפתח וערך, ללא שום עיצוב, כפתורים או סגנון.
+
+משל פשוט: כמו רשימת מכולת או תעודת זהות. רק עובדות ונתונים יבשים: שם: משה, גיל: 12.
+
+מתי השרת מחזיר כל אחד מהם?
+
+השרת מחזיר HTML כאשר:
+
+הדפדפן מבקש להציג דף אינטרנט שלם למשתמש (למשל כשנכנסים לראשונה לאתר). הדפדפן מקבל את ה-HTML ומצייר את העמוד על המסך.
+
+השרת מחזיר JSON כאשר:
+
+תוכנה או אתר שברקע מבקשים רק את המידע הנקי (בדרך כלל דרך API), בלי לטעון את כל העמוד מחדש. למשל, כשלוחצים על כפתור "רענן רשימה" והאתר רוצה לעדכן רק את הנתונים הקיימים על המסך.
+
+Gemini נטפרי
+‫Gem בהתאמה אישית
+למה נוצר Express?
+
+Express נוצר כדי לחסוך עבודה קשה ולפשט את יצירת השרתים ב-Node.js.
+
+בלי Express, לכתוב שרת באמצעות הרכיב הבסיסי של Node.js (http) זה כמו לבנות בית מלבנים בודדות במו ידיך — זה דורש המון קוד חוזר, מסורבל ומורכב לכל פעולה קטנה. Express מעניק "כלי עבודה מוכנים" שמקצרים את התהליך.
+
+השוואה: שרת ב-http לעומת שרת ב-Express
+קריאות הקוד (Readability):
+
+עם http הבסיסי: הקוד ארוך ומלא בתנאים (if/else) כדי לבדוק לאיזה נתיב המשתמש ניסה להגיע (למשל / או /users) ואיזה סוג בקשה זו (GET, POST).
+
+עם Express: הקוד קצר, נקי ומודולרי. מגדירים נתיבים בצורה מאוד ברורה, כמו: app.get('/users', ...) – מיד מבינים מה הקוד עושה.
+
+פרודוקטיביות ומהירות פיתוח (Developer Productivity):
+
+עם http הבסיסי: מפתח צריך לכתוב בעצמו מנגנונים בסיסיים כמו קריאת נתוני JSON, טיפול בקבצים סטטיים, ניהול שגיאות ונתיבים (Routing). זה לוקח זמן יקר ועלול להוביל לטעויות.
+
+עם Express: הכל מוכן ונגיש בשורה אחת או שתיים. Express מטפל אוטומטית בהרבה מהמשימות השגרתיות ומאפשר למפתח להתמקד בבניית הלוגיקה של האפליקציה במקום בבניית התשתיות.
+
+Gemini נטפרי
+‫Gem בהתאמה אישית
+מה זה Route (נתיב) ב-Express?
+
+Route הוא כמו כתובת או שילוט בתוך האתר. הוא מגדיר לשרת מה לעשות ואיזו תשובה להחזיר כאשר המשתמש מנסה להגיע לכתובת מסוימת בדפדפן (בעזרת פעולה מסוימת כמו בקשת GET).
+
+3 דוגמאות לנתיבי GET (ומאילו נתונים הם יחזירו):
+דף הבית – /
+
+נתיב: app.get('/', ...)
+
+מה הוא מחזיר: קובץ HTML או הודעת ברכה פשוטה שמציגה את עמוד הבית של האתר (למשל: "ברוכים הבאים לאתר!").
+
+רשימת מוצרים – /products
+
+נתיב: app.get('/products', ...)
+
+מה הוא מחזיר: מערך בפורמט JSON שמכיל את כל המוצרים בחנות (למשל: רשימה של שם מוצר, מחיר ומזהה).
+
+פרטי מוצר ספציפי – /products/1
+
+נתיב: app.get('/products/1', ...)
+
+מה הוא מחזיר: אובייקט JSON שמכיל אך ורק את הנתונים המלאים של מוצר מסוים (למשל: המוצר בעל מזהה מספר 1).
+
+Gemini נטפרי
+‫Gem בהתאמה אישית
+מה זה Module (מודול) ב-Node.js?
+
+מודול הוא פשוט קובץ קוד נפרד שמשמש כמו "קופסת כלים". במקום לכתוב את כל הקוד בקובץ אחד ענקי ומסורבל, מחלקים אותו לקבצים קטנים ושתופסים אחריות על דברים שונים.
+
+איך קובץ אחד משתמש בקוד מקובץ אחר?
+
+קובץ א' מייצא (Export) את הפונקציה או המידע שהוא רוצה לשתף.
+
+קובץ ב' מייבא (Require) את המידע מקובץ א' ומשתמש בו.
+
+דוגמה פשוטה מאוד (עם module.exports ו-require):
+
+1. קובץ ראשון: math.js (הקובץ שמייצא)
+
+JavaScript
+function add(a, b) {
+  return a + b;
+}
+
+// ייצוא הפונקציה כדי שקבצים אחרים יוכלו להשתמש בה
+module.exports = add;
+2. קובץ שני: app.js (הקובץ שמייבא ומשתמש)
+
+JavaScript
+// ייבוא הפונקציה מהקובץ הראשון
+const add = require('./math.js');
+
+// שימוש בפונקציה
+console.log(add(2, 3)); // מדפיס: 5
+
+תראה, זה מה שאני צריכה לבצע, כעת אני רוצה שניצור שרת בסיסי באקספרס
+
+Gemini נטפרי
+‫Gem בהתאמה אישית
+בואי נבנה את המשימה שלב אחר שלב באופן מדויק ובטוח, בדיוק לפי הדרישות שבתמונות!
+
+המטרה של המשימה היא ליצור שרת Express המחולק למספר קבצים (קובץ ראשי, קובץ עבור הקורסים וקובץ עבור התלמידים), שמחזיר נתונים בפורמט JSON בשלושה נתיבים (Routes) שונים.
+
+שלב 1: יצירת הקבצים בפרויקט
+בתוך התיקייה של הפרויקט, צרי 3 קבצי JavaScript:
+
+courses.js – יכיל את מערך הקורסים ויצא אותו.
+
+students.js – יכיל את מערך התלמידים ויצא אותו.
+
+index.js – הקובץ הראשי שמקים את שרת ה-Express.
+
+שלב 2: כתיבת קובץ הקורסים (courses.js)
+בתוך הקובץ courses.js נגדיר את מערך הקורסים ונייצא אותו:
+
+JavaScript
+const courses = [
+  { id: 1, name: 'Node.js Basics' },
+  { id: 2, name: 'Express Server' },
+  { id: 3, name: 'JavaScript Advanced' }
+];
+
+module.exports = courses;
+שלב 3: כתיבת קובץ התלמידים (students.js)
+בתוך הקובץ students.js נגדיר את מערך התלמידים ונייצא אותו:
+
+JavaScript
+const students = [
+  { id: 101, name: 'David' },
+  { id: 102, name: 'Sarah' },
+  { id: 103, name: 'Rachel' }
+];
+
+module.exports = students;
+שלב 4: כתיבת הקובץ הראשי (index.js)
+בקובץ index.js נגדיר את שרת ה-Express, ניילא את המודולים שיצרנו ונבנה את 3 הנתיבים הנדרשים (שכולם מחזירים JSON בלבד):
+
+JavaScript
+const express = require('express');
+const courses = require('./courses');
+const students = require('./students');
+
+const app = express();
+const PORT = 3000;
+
+// נתיב 1: כתובת השרת הראשי
+app.get('/', (req, res) => {
+  res.json({
+    status: 'success',
+    message: 'Welcome to our Server API',
+    version: '1.0.0'
+  });
+});
+
+// נתיב 2: רשימת הקורסים
+app.get('/courses', (req, res) => {
+  res.json(courses);
+});
+
+// נתיב 3: רשימת התלמידים
+app.get('/students', (req, res) => {
+  res.json(students);
+});
+
+// הפעלת השרת
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+שלב 5: בדיקת השרת בדפדפן
+מריצים את השרת בטרמינל בעזרת הפקודה:
+
+Bash
+node index.js
+פותחים את הדפדפן ובודקים את הקישורים הבאים:
+
+http://localhost:3000 — מציג הודעת מידע קצרה ב-JSON.
+
+http://localhost:3000/courses — מציג את רשימת הקורסים ב-JSON.
+
+http://localhost:3000/students — מציג את רשימת התלמידים ב-JSON.
+
+שלב 6: תיעוד והעלאה ל-GitHub
+קובץ התיעוד (.txt): לפי הוראות המשימה, יש לשמור קובץ טקסט בפרויקט ולתעד בו את שלבי העבודה והפרומפטים.
+
+העלאה ב-GitHub Desktop:
+
+פותחים את GitHub Desktop.
+
+כותבים בשדה Summary: Implement Express server with modular structure and routes.
+
+לוחצים Commit to main.
+
+לוחצים Push origin להעלאה.
+
+סיימת את הקוד ואת הבדיקה? ספרי לי אם תרצי לעבור יחד על קובץ התיעוד או להמשיך לשלב הבא!
+
+כבר יש לי את זה מהשיעור הקודםimport http from 'http';
+
+import chalk from 'chalk';
+
+const express = require('express');
+
+const app = express();
+
+
+
+// 1. הגדרת מערך הקורסים
+
+const courses = [
+
+  {
+
+    id: 1,
+
+    name: 'פיתוח ב-Node.js',
+
+    description: 'קורס מקיף לבניית שרתי אינטרנט'
+
+  },
+
+  {
+
+    id: 2,
+
+    name: 'יסודות HTML ו-CSS',
+
+    description: 'עיצוב ובניית דפי אינטרנט'
+
+  },
+
+  {
+
+    id: 3,
+
+    name: 'תכנות ב-JavaScript',
+
+    description: 'למידת שפת התכנות של עולם ה-Web'
+
+  }
+
+];
+
+
+
+// 2. יצירת השרת
+
+const server = http.createServer((req, res) => {
+
+  // הגדרת כותרת לתמיכה בעברית
+
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+
+
+
+  // הדפסה צבעונית בטרמינל בעת כניסה
+
+  console.log(chalk.blue('--- התקבלה בקשה חדשה לשרת ---'));
+
+  courses.forEach(course => {
+
+    console.log(chalk.green.underline(`[ID: ${course.id}] `) + chalk.yellow(course.name));
+
+  });
+
+
+
+  // בנאית תשובת ה-HTML לדפדפן
+
+  let htmlResponse = '<h1>רשימת קורסים</h1><ul>';
+
+  courses.forEach(course => {
+
+    htmlResponse += `<li><strong>${course.name}</strong>: ${course.description}</li>`;
+
+  });
+
+  htmlResponse += '</ul>';
+
+
+
+  res.end(htmlResponse);
+
+});
+
+
+
+// 3. הפעלת השרת
+
+const PORT = 3000;
+
+server.listen(PORT, () => {
+
+  console.log(chalk.green(`השרת פעיל בכתובת: http://localhost:${PORT}`));
+
+});
+
+Gemini נטפרי
+‫Gem בהתאמה אישית
+מצויין! כדי להעביר את הקוד הקיים מהשיעור הקודם לעבודה מלאה ב-Express ולחלק אותו לקבצים שונים לפי דרישות המשימה, בואי נעשה את השינויים הבאים:
+
+1. קובץ courses.js
+נפריד את רשימת הקורסים לקובץ משלו ונצא אותו:
+
+JavaScript
+const courses = [
+  {
+    id: 1,
+    name: 'פיתוח ב-Node.js',
+    description: 'קורס מקיף לבניית שרתי אינטרנט'
+  },
+  {
+    id: 2,
+    name: 'יסודות HTML ו-CSS',
+    description: 'עיצוב ובניית דפי אינטרנט'
+  },
+  {
+    id: 3,
+    name: 'תכנות ב-JavaScript',
+    description: 'למידת שפת התכנות של עולם ה-Web'
+  }
+];
+
+module.exports = courses;
+2. קובץ students.js
+נקים קובץ נפרד עבור התלמידים:
+
+JavaScript
+const students = [
+  { id: 101, name: 'דוד' },
+  { id: 102, name: 'שרה' },
+  { id: 103, name: 'רחל' }
+];
+
+module.exports = students;
+3. קובץ index.js (הקובץ הראשי)
+כאן נשתמש ב-Express במקום ב-http.createServer, ונגדיר את 3 הנתיבים (Routes) שמחזירים JSON בלבד:
+
+JavaScript
+const express = require('express');
+const courses = require('./courses');
+const students = require('./students');
+
+const app = express();
+const PORT = 3000;
+
+// נתיב ראשי: http://localhost:3000
+app.get('/', (req, res) => {
+  res.json({
+    status: 'success',
+    message: 'Welcome to our Express server',
+    description: 'Server provides courses and students data'
+  });
+});
+
+// נתיב קורסים: http://localhost:3000/courses
+app.get('/courses', (req, res) => {
+  res.json(courses);
+});
+
+// נתיב תלמידים: http://localhost:3000/students
+app.get('/students', (req, res) => {
+  res.json(students);
+});
+
+// הפעלת השרת
+app.listen(PORT, () => {
+  console.log(`השרת פעיל בכתובת: http://localhost:${PORT}`);
+});
+מה השתנה מהקוד הקודם?
+שימוש ב-Express בלבד: הורדנו את http.createServer ואת העיצוב הסטטי של HTML.
+
+החזרת JSON בלבד: השרת עושה שימוש ב-res.json(...) עבור כל הקריאות.
+
+חלוקה למודולים: הנתונים של הקורסים והתלמידים מנוהלים כעת בקבצים נפרדים ומיובאים בעזרת require.
+
+אוקיי עכשיו איך יוצרים שרת בסיסי באקספרס?
+
+Gemini נטפרי
+‫Gem בהתאמה אישית
+כדי ליצור שרת בסיסי ב-Express, יש לבצע את הצעדים הבאים:
+
+התקנת ספריית Express (במידה ועדיין לא הותקנה) בטרמינל בתוך תיקיית הפרויקט:
+
+Bash
+npm install express
+כתיבת הקוד בקובץ הראשי (index.js):
+
+JavaScript
+const express = require('express');
+const app = express();
+const PORT = 3000;
+
+// הגדרת נתיב (Route) בסיסי של GET
+app.get('/', (req, res) => {
+  res.json({ message: 'Hello World from Express!' });
+});
+
+// הפעלת השרת והאזנה הפורט
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+הרצת השרת בטרמינל:
+
+Bash
+node index.js
+לאחר מכן ניתן לפתוח את הדפדפן בכתובת http://localhost:3000 ולראות את התשובה מהשרת.
+
+לא רץ כראוי
+
+Gemini נטפרי
+‫Gem בהתאמה אישית
+כדי להבין בדיוק מה לא עובד בריצת השרת, נדרש לדעת איזה פלט או שגיאה מופיעים בטרמינל כשמנסים להריץ אותו.
+
+כדי לבדוק את זה באופן מסודר:
+
+בדיקת השגיאה בטרמינל:
+
+מהי הודעת השגיאה המדויקת שמופיעה בטרמינל כשמריצים node index.js?
+
+בדיקת נקודות נפוצות:
+
+שגיאת Cannot find module 'express': מצביעה על כך שההתקנה לא בוצעה בתיקייה הנכונה. יש להריץ npm install express בתוך תיקיית הפרויקט.
+
+שגיאת SyntaxError: Cannot use import statement outside a module: קורית אם מעורבב שימוש ב-import עם require. ב-Node.js בסיסי מומלץ להשתמש ב-require:
+
+JavaScript
+const express = require('express');
+שגיאת EADDRINUSE: אומרת שפורט 3000 כבר תפוס על ידי שרת אחר שרץ ברקע. אפשר לשנות את הפורט בקוד ל-3001 או לסגור את החלון הקודם שבו השרת רץ.
+
+איזו הודעה מופיעה בטרמינל בעת הרצת הפקודה?
+
+Gemini נטפרי
+‫Gem בהתאמה אישית
+השגיאה הזו מופיעה מכיוון שבקובץ package.json שלך מוגדר "type": "module". הגדרה זו אומרת ל-Node.js להשתמש בשיטת import (ES Modules) ולא ב-require.
+
+לפתרון הבעיה יש שתי דרכים (לפי מה שנוח לך):
+
+אפשרות 1: להשתמש ב-import בקוד (מומלץ אם הקובץ package.json כבר מוגדר כ-module)
+משנים את שורות ה-require וה-module.exports לשורות של import ו-export default.
+
+בתוך courses.js:
+
+JavaScript
+const courses = [
+  { id: 1, name: 'פיתוח ב-Node.js', description: 'קורס מקיף לבניית שרתי אינטרנט' },
+  { id: 2, name: 'יסודות HTML ו-CSS', description: 'עיצוב ובניית דפי אינטרנט' },
+  { id: 3, name: 'תכנות ב-JavaScript', description: 'למידת שפת התכנות של עולם ה-Web' }
+];
+
+export default courses;
+בתוך students.js:
+
+JavaScript
+const students = [
+  { id: 101, name: 'דוד' },
+  { id: 102, name: 'שרה' },
+  { id: 103, name: 'רחל' }
+];
+
+export default students;
+בתוך index.js:
+
+JavaScript
+import express from 'express';
+import courses from './courses.js';
+import students from './students.js';
+
+const app = express();
+const PORT = 3000;
+
+app.get('/', (req, res) => {
+  res.json({
+    status: 'success',
+    message: 'Welcome to our Express server'
+  });
+});
+
+app.get('/courses', (req, res) => {
+  res.json(courses);
+});
+
+app.get('/students', (req, res) => {
+  res.json(students);
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+(שים לב: בשימוש ב-import חובה להוסיף את הסיומת .js בסוף נתיב הקובץ, למשל ./courses.js).
+
+אפשרות 2: להישאר עם require
+אם את/ה מעדיף/ה להשתמש ב-require:
+
+פותחים את הקובץ package.json.
+
+מוחקים את השורה "type": "module".
+
+שומרים את הקובץ.
+
+מריצים שוב node index.js.
+
+באיזה שורה זה כתוב?{
+
+  "name": "lesson1",
+
+  "version": "1.0.0",
+
+  "lockfileVersion": 3,
+
+  "requires": true,
+
+  "packages": {
+
+    "node_modules/accepts": {
+
+      "version": "2.0.0",
+
+      "resolved": "https://registry.npmjs.org/accepts/-/accepts-2.0.0.tgz",
+
+      "integrity": "sha512-5cvg6CtKwfgdmVqY1WIiXKc3Q1bkRqGLi+2W/6ao+6Y7gu/RCwRuAhGEzh5B4KlszSuTLgZYuqFqo5bImjNKng==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "mime-types": "^3.0.0",
+
+        "negotiator": "^1.0.0"
+
+      },
+
+      "engines": {
+
+        "node": ">= 0.6"
+
+      }
+
+    },
+
+    "node_modules/body-parser": {
+
+      "version": "2.3.0",
+
+      "resolved": "https://registry.npmjs.org/body-parser/-/body-parser-2.3.0.tgz",
+
+      "integrity": "sha512-2cGmJupaNgg+QUwVLAucDuWuoMZ6EX9iHDRswZ5lsNYEmwPaRknMPCLZz07yTzVq/83p4o/wzbDZbBrTvGGTIw==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "bytes": "^3.1.2",
+
+        "content-type": "^2.0.0",
+
+        "debug": "^4.4.3",
+
+        "http-errors": "^2.0.1",
+
+        "iconv-lite": "^0.7.2",
+
+        "on-finished": "^2.4.1",
+
+        "qs": "^6.15.2",
+
+        "raw-body": "^3.0.2",
+
+        "type-is": "^2.1.0"
+
+      },
+
+      "engines": {
+
+        "node": ">=18"
+
+      },
+
+      "funding": {
+
+        "type": "opencollective",
+
+        "url": "https://opencollective.com/express"
+
+      }
+
+    },
+
+    "node_modules/body-parser/node_modules/content-type": {
+
+      "version": "2.1.0",
+
+      "resolved": "https://registry.npmjs.org/content-type/-/content-type-2.1.0.tgz",
+
+      "integrity": "sha512-mj7UPXE0jaqaOsukNZRUEfEi2AcL7C/vwmwcHV0O97eO1E1pxBZuyjlZrx5seTaNBg1U6+o35wpa35Qfcc+7ag==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">=18"
+
+      },
+
+      "funding": {
+
+        "type": "opencollective",
+
+        "url": "https://opencollective.com/express"
+
+      }
+
+    },
+
+    "node_modules/bytes": {
+
+      "version": "3.1.2",
+
+      "resolved": "https://registry.npmjs.org/bytes/-/bytes-3.1.2.tgz",
+
+      "integrity": "sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.8"
+
+      }
+
+    },
+
+    "node_modules/call-bind-apply-helpers": {
+
+      "version": "1.0.2",
+
+      "resolved": "https://registry.npmjs.org/call-bind-apply-helpers/-/call-bind-apply-helpers-1.0.2.tgz",
+
+      "integrity": "sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "es-errors": "^1.3.0",
+
+        "function-bind": "^1.1.2"
+
+      },
+
+      "engines": {
+
+        "node": ">= 0.4"
+
+      }
+
+    },
+
+    "node_modules/call-bound": {
+
+      "version": "1.0.4",
+
+      "resolved": "https://registry.npmjs.org/call-bound/-/call-bound-1.0.4.tgz",
+
+      "integrity": "sha512-+ys997U96po4Kx/ABpBCqhA9EuxJaQWDQg7295H4hBphv3IZg0boBKuwYpt4YXp6MZ5AmZQnU/tyMTlRpaSejg==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "call-bind-apply-helpers": "^1.0.2",
+
+        "get-intrinsic": "^1.3.0"
+
+      },
+
+      "engines": {
+
+        "node": ">= 0.4"
+
+      },
+
+      "funding": {
+
+        "url": "https://github.com/sponsors/ljharb"
+
+      }
+
+    },
+
+    "node_modules/chalk": {
+
+      "version": "5.6.2",
+
+      "resolved": "https://registry.npmjs.org/chalk/-/chalk-5.6.2.tgz",
+
+      "integrity": "sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": "^12.17.0 || ^14.13 || >=16.0.0"
+
+      },
+
+      "funding": {
+
+        "url": "https://github.com/chalk/chalk?sponsor=1"
+
+      }
+
+    },
+
+    "node_modules/content-disposition": {
+
+      "version": "1.1.0",
+
+      "resolved": "https://registry.npmjs.org/content-disposition/-/content-disposition-1.1.0.tgz",
+
+      "integrity": "sha512-5jRCH9Z/+DRP7rkvY83B+yGIGX96OYdJmzngqnw2SBSxqCFPd0w2km3s5iawpGX8krnwSGmF0FW5Nhr0Hfai3g==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">=18"
+
+      },
+
+      "funding": {
+
+        "type": "opencollective",
+
+        "url": "https://opencollective.com/express"
+
+      }
+
+    },
+
+    "node_modules/content-type": {
+
+      "version": "1.0.5",
+
+      "resolved": "https://registry.npmjs.org/content-type/-/content-type-1.0.5.tgz",
+
+      "integrity": "sha512-nTjqfcBFEipKdXCv4YDQWCfmcLZKm81ldF0pAopTvyrFGVbcR6P/VAAd5G7N+0tTr8QqiU0tFadD6FK4NtJwOA==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.6"
+
+      }
+
+    },
+
+    "node_modules/cookie": {
+
+      "version": "0.7.2",
+
+      "resolved": "https://registry.npmjs.org/cookie/-/cookie-0.7.2.tgz",
+
+      "integrity": "sha512-yki5XnKuf750l50uGTllt6kKILY4nQ1eNIQatoXEByZ5dWgnKqbnqmTrBE5B4N7lrMJKQ2ytWMiTO2o0v6Ew/w==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.6"
+
+      }
+
+    },
+
+    "node_modules/cookie-signature": {
+
+      "version": "1.2.2",
+
+      "resolved": "https://registry.npmjs.org/cookie-signature/-/cookie-signature-1.2.2.tgz",
+
+      "integrity": "sha512-D76uU73ulSXrD1UXF4KE2TMxVVwhsnCgfAyTg9k8P6KGZjlXKrOLe4dJQKI3Bxi5wjesZoFXJWElNWBjPZMbhg==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">=6.6.0"
+
+      }
+
+    },
+
+    "node_modules/debug": {
+
+      "version": "4.4.3",
+
+      "resolved": "https://registry.npmjs.org/debug/-/debug-4.4.3.tgz",
+
+      "integrity": "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "ms": "^2.1.3"
+
+      },
+
+      "engines": {
+
+        "node": ">=6.0"
+
+      },
+
+      "peerDependenciesMeta": {
+
+        "supports-color": {
+
+          "optional": true
+
+        }
+
+      }
+
+    },
+
+    "node_modules/depd": {
+
+      "version": "2.0.0",
+
+      "resolved": "https://registry.npmjs.org/depd/-/depd-2.0.0.tgz",
+
+      "integrity": "sha512-g7nH6P6dyDioJogAAGprGpCtVImJhpPk/roCzdb3fIh61/s/nPsfR6onyMwkCAR/OlC3yBC0lESvUoQEAssIrw==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.8"
+
+      }
+
+    },
+
+    "node_modules/dunder-proto": {
+
+      "version": "1.0.1",
+
+      "resolved": "https://registry.npmjs.org/dunder-proto/-/dunder-proto-1.0.1.tgz",
+
+      "integrity": "sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "call-bind-apply-helpers": "^1.0.1",
+
+        "es-errors": "^1.3.0",
+
+        "gopd": "^1.2.0"
+
+      },
+
+      "engines": {
+
+        "node": ">= 0.4"
+
+      }
+
+    },
+
+    "node_modules/ee-first": {
+
+      "version": "1.1.1",
+
+      "resolved": "https://registry.npmjs.org/ee-first/-/ee-first-1.1.1.tgz",
+
+      "integrity": "sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==",
+
+      "license": "MIT"
+
+    },
+
+    "node_modules/encodeurl": {
+
+      "version": "2.0.0",
+
+      "resolved": "https://registry.npmjs.org/encodeurl/-/encodeurl-2.0.0.tgz",
+
+      "integrity": "sha512-Q0n9HRi4m6JuGIV1eFlmvJB7ZEVxu93IrMyiMsGC0lrMJMWzRgx6WGquyfQgZVb31vhGgXnfmPNNXmxnOkRBrg==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.8"
+
+      }
+
+    },
+
+    "node_modules/es-define-property": {
+
+      "version": "1.0.1",
+
+      "resolved": "https://registry.npmjs.org/es-define-property/-/es-define-property-1.0.1.tgz",
+
+      "integrity": "sha512-e3nRfgfUZ4rNGL232gUgX06QNyyez04KdjFrF+LTRoOXmrOgFKDg4BCdsjW8EnT69eqdYGmRpJwiPVYNrCaW3g==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.4"
+
+      }
+
+    },
+
+    "node_modules/es-errors": {
+
+      "version": "1.3.0",
+
+      "resolved": "https://registry.npmjs.org/es-errors/-/es-errors-1.3.0.tgz",
+
+      "integrity": "sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.4"
+
+      }
+
+    },
+
+    "node_modules/es-object-atoms": {
+
+      "version": "1.1.2",
+
+      "resolved": "https://registry.npmjs.org/es-object-atoms/-/es-object-atoms-1.1.2.tgz",
+
+      "integrity": "sha512-HWcBoN6NileqtSydK2FqHbS/LoDd2pqrnQHLyJzBj4kOp/ky2MWMN694xOfkK8/SnUsW2DH7EfyVlydKCsm1Zw==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "es-errors": "^1.3.0"
+
+      },
+
+      "engines": {
+
+        "node": ">= 0.4"
+
+      }
+
+    },
+
+    "node_modules/escape-html": {
+
+      "version": "1.0.3",
+
+      "resolved": "https://registry.npmjs.org/escape-html/-/escape-html-1.0.3.tgz",
+
+      "integrity": "sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow==",
+
+      "license": "MIT"
+
+    },
+
+    "node_modules/etag": {
+
+      "version": "1.8.1",
+
+      "resolved": "https://registry.npmjs.org/etag/-/etag-1.8.1.tgz",
+
+      "integrity": "sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.6"
+
+      }
+
+    },
+
+    "node_modules/express": {
+
+      "version": "5.2.1",
+
+      "resolved": "https://registry.npmjs.org/express/-/express-5.2.1.tgz",
+
+      "integrity": "sha512-hIS4idWWai69NezIdRt2xFVofaF4j+6INOpJlVOLDO8zXGpUVEVzIYk12UUi2JzjEzWL3IOAxcTubgz9Po0yXw==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "accepts": "^2.0.0",
+
+        "body-parser": "^2.2.1",
+
+        "content-disposition": "^1.0.0",
+
+        "content-type": "^1.0.5",
+
+        "cookie": "^0.7.1",
+
+        "cookie-signature": "^1.2.1",
+
+        "debug": "^4.4.0",
+
+        "depd": "^2.0.0",
+
+        "encodeurl": "^2.0.0",
+
+        "escape-html": "^1.0.3",
+
+        "etag": "^1.8.1",
+
+        "finalhandler": "^2.1.0",
+
+        "fresh": "^2.0.0",
+
+        "http-errors": "^2.0.0",
+
+        "merge-descriptors": "^2.0.0",
+
+        "mime-types": "^3.0.0",
+
+        "on-finished": "^2.4.1",
+
+        "once": "^1.4.0",
+
+        "parseurl": "^1.3.3",
+
+        "proxy-addr": "^2.0.7",
+
+        "qs": "^6.14.0",
+
+        "range-parser": "^1.2.1",
+
+        "router": "^2.2.0",
+
+        "send": "^1.1.0",
+
+        "serve-static": "^2.2.0",
+
+        "statuses": "^2.0.1",
+
+        "type-is": "^2.0.1",
+
+        "vary": "^1.1.2"
+
+      },
+
+      "engines": {
+
+        "node": ">= 18"
+
+      },
+
+      "funding": {
+
+        "type": "opencollective",
+
+        "url": "https://opencollective.com/express"
+
+      }
+
+    },
+
+    "node_modules/finalhandler": {
+
+      "version": "2.1.1",
+
+      "resolved": "https://registry.npmjs.org/finalhandler/-/finalhandler-2.1.1.tgz",
+
+      "integrity": "sha512-S8KoZgRZN+a5rNwqTxlZZePjT/4cnm0ROV70LedRHZ0p8u9fRID0hJUZQpkKLzro8LfmC8sx23bY6tVNxv8pQA==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "debug": "^4.4.0",
+
+        "encodeurl": "^2.0.0",
+
+        "escape-html": "^1.0.3",
+
+        "on-finished": "^2.4.1",
+
+        "parseurl": "^1.3.3",
+
+        "statuses": "^2.0.1"
+
+      },
+
+      "engines": {
+
+        "node": ">= 18.0.0"
+
+      },
+
+      "funding": {
+
+        "type": "opencollective",
+
+        "url": "https://opencollective.com/express"
+
+      }
+
+    },
+
+    "node_modules/forwarded": {
+
+      "version": "0.2.0",
+
+      "resolved": "https://registry.npmjs.org/forwarded/-/forwarded-0.2.0.tgz",
+
+      "integrity": "sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.6"
+
+      }
+
+    },
+
+    "node_modules/fresh": {
+
+      "version": "2.0.0",
+
+      "resolved": "https://registry.npmjs.org/fresh/-/fresh-2.0.0.tgz",
+
+      "integrity": "sha512-Rx/WycZ60HOaqLKAi6cHRKKI7zxWbJ31MhntmtwMoaTeF7XFH9hhBp8vITaMidfljRQ6eYWCKkaTK+ykVJHP2A==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.8"
+
+      }
+
+    },
+
+    "node_modules/function-bind": {
+
+      "version": "1.1.2",
+
+      "resolved": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.2.tgz",
+
+      "integrity": "sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==",
+
+      "license": "MIT",
+
+      "funding": {
+
+        "url": "https://github.com/sponsors/ljharb"
+
+      }
+
+    },
+
+    "node_modules/get-intrinsic": {
+
+      "version": "1.3.0",
+
+      "resolved": "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.3.0.tgz",
+
+      "integrity": "sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "call-bind-apply-helpers": "^1.0.2",
+
+        "es-define-property": "^1.0.1",
+
+        "es-errors": "^1.3.0",
+
+        "es-object-atoms": "^1.1.1",
+
+        "function-bind": "^1.1.2",
+
+        "get-proto": "^1.0.1",
+
+        "gopd": "^1.2.0",
+
+        "has-symbols": "^1.1.0",
+
+        "hasown": "^2.0.2",
+
+        "math-intrinsics": "^1.1.0"
+
+      },
+
+      "engines": {
+
+        "node": ">= 0.4"
+
+      },
+
+      "funding": {
+
+        "url": "https://github.com/sponsors/ljharb"
+
+      }
+
+    },
+
+    "node_modules/get-proto": {
+
+      "version": "1.0.1",
+
+      "resolved": "https://registry.npmjs.org/get-proto/-/get-proto-1.0.1.tgz",
+
+      "integrity": "sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "dunder-proto": "^1.0.1",
+
+        "es-object-atoms": "^1.0.0"
+
+      },
+
+      "engines": {
+
+        "node": ">= 0.4"
+
+      }
+
+    },
+
+    "node_modules/gopd": {
+
+      "version": "1.2.0",
+
+      "resolved": "https://registry.npmjs.org/gopd/-/gopd-1.2.0.tgz",
+
+      "integrity": "sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.4"
+
+      },
+
+      "funding": {
+
+        "url": "https://github.com/sponsors/ljharb"
+
+      }
+
+    },
+
+    "node_modules/has-symbols": {
+
+      "version": "1.1.0",
+
+      "resolved": "https://registry.npmjs.org/has-symbols/-/has-symbols-1.1.0.tgz",
+
+      "integrity": "sha512-1cDNdwJ2Jaohmb3sg4OmKaMBwuC48sYni5HUw2DvsC8LjGTLK9h+eb1X6RyuOHe4hT0ULCW68iomhjUoKUqlPQ==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.4"
+
+      },
+
+      "funding": {
+
+        "url": "https://github.com/sponsors/ljharb"
+
+      }
+
+    },
+
+    "node_modules/hasown": {
+
+      "version": "2.0.4",
+
+      "resolved": "https://registry.npmjs.org/hasown/-/hasown-2.0.4.tgz",
+
+      "integrity": "sha512-T2UbfbBEF32wiepXIsMlTW9+dDYC6wMh/t/vYA4tuOMKqWz/n3vr1NFSxQiyP+zk2mXsoMA/i/7qV6LKut1t1A==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "function-bind": "^1.1.2"
+
+      },
+
+      "engines": {
+
+        "node": ">= 0.4"
+
+      }
+
+    },
+
+    "node_modules/http-errors": {
+
+      "version": "2.0.1",
+
+      "resolved": "https://registry.npmjs.org/http-errors/-/http-errors-2.0.1.tgz",
+
+      "integrity": "sha512-4FbRdAX+bSdmo4AUFuS0WNiPz8NgFt+r8ThgNWmlrjQjt1Q7ZR9+zTlce2859x4KSXrwIsaeTqDoKQmtP8pLmQ==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "depd": "~2.0.0",
+
+        "inherits": "~2.0.4",
+
+        "setprototypeof": "~1.2.0",
+
+        "statuses": "~2.0.2",
+
+        "toidentifier": "~1.0.1"
+
+      },
+
+      "engines": {
+
+        "node": ">= 0.8"
+
+      },
+
+      "funding": {
+
+        "type": "opencollective",
+
+        "url": "https://opencollective.com/express"
+
+      }
+
+    },
+
+    "node_modules/iconv-lite": {
+
+      "version": "0.7.3",
+
+      "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.7.3.tgz",
+
+      "integrity": "sha512-IKXpvIzjnC9XTAUbVBcMfGS0EPaIXtW6v+zr+RRp+hqULEpo0owZax6wyRwPOJbWbzjYspQwusTsfVr0ifh4uQ==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "safer-buffer": ">= 2.1.2 < 3.0.0"
+
+      },
+
+      "engines": {
+
+        "node": ">=0.10.0"
+
+      },
+
+      "funding": {
+
+        "type": "opencollective",
+
+        "url": "https://opencollective.com/express"
+
+      }
+
+    },
+
+    "node_modules/inherits": {
+
+      "version": "2.0.4",
+
+      "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz",
+
+      "integrity": "sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==",
+
+      "license": "ISC"
+
+    },
+
+    "node_modules/ipaddr.js": {
+
+      "version": "1.9.1",
+
+      "resolved": "https://registry.npmjs.org/ipaddr.js/-/ipaddr.js-1.9.1.tgz",
+
+      "integrity": "sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.10"
+
+      }
+
+    },
+
+    "node_modules/is-promise": {
+
+      "version": "4.0.0",
+
+      "resolved": "https://registry.npmjs.org/is-promise/-/is-promise-4.0.0.tgz",
+
+      "integrity": "sha512-hvpoI6korhJMnej285dSg6nu1+e6uxs7zG3BYAm5byqDsgJNWwxzM6z6iZiAgQR4TJ30JmBTOwqZUw3WlyH3AQ==",
+
+      "license": "MIT"
+
+    },
+
+    "node_modules/math-intrinsics": {
+
+      "version": "1.1.0",
+
+      "resolved": "https://registry.npmjs.org/math-intrinsics/-/math-intrinsics-1.1.0.tgz",
+
+      "integrity": "sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.4"
+
+      }
+
+    },
+
+    "node_modules/media-typer": {
+
+      "version": "1.1.1",
+
+      "resolved": "https://registry.npmjs.org/media-typer/-/media-typer-1.1.1.tgz",
+
+      "integrity": "sha512-yz3xRaG20c6/BOzvYoDaGtPmGscs7YivItZEEqe6GbwNfHuxu9YNmvnEkMzKldAGY4/80pRcQRZSEnhquk9XuQ==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.8"
+
+      },
+
+      "funding": {
+
+        "type": "opencollective",
+
+        "url": "https://opencollective.com/express"
+
+      }
+
+    },
+
+    "node_modules/merge-descriptors": {
+
+      "version": "2.0.0",
+
+      "resolved": "https://registry.npmjs.org/merge-descriptors/-/merge-descriptors-2.0.0.tgz",
+
+      "integrity": "sha512-Snk314V5ayFLhp3fkUREub6WtjBfPdCPY1Ln8/8munuLuiYhsABgBVWsozAG+MWMbVEvcdcpbi9R7ww22l9Q3g==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">=18"
+
+      },
+
+      "funding": {
+
+        "url": "https://github.com/sponsors/sindresorhus"
+
+      }
+
+    },
+
+    "node_modules/mime-db": {
+
+      "version": "1.54.0",
+
+      "resolved": "https://registry.npmjs.org/mime-db/-/mime-db-1.54.0.tgz",
+
+      "integrity": "sha512-aU5EJuIN2WDemCcAp2vFBfp/m4EAhWJnUNSSw0ixs7/kXbd6Pg64EmwJkNdFhB8aWt1sH2CTXrLxo/iAGV3oPQ==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.6"
+
+      }
+
+    },
+
+    "node_modules/mime-types": {
+
+      "version": "3.0.2",
+
+      "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-3.0.2.tgz",
+
+      "integrity": "sha512-Lbgzdk0h4juoQ9fCKXW4by0UJqj+nOOrI9MJ1sSj4nI8aI2eo1qmvQEie4VD1glsS250n15LsWsYtCugiStS5A==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "mime-db": "^1.54.0"
+
+      },
+
+      "engines": {
+
+        "node": ">=18"
+
+      },
+
+      "funding": {
+
+        "type": "opencollective",
+
+        "url": "https://opencollective.com/express"
+
+      }
+
+    },
+
+    "node_modules/ms": {
+
+      "version": "2.1.3",
+
+      "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz",
+
+      "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==",
+
+      "license": "MIT"
+
+    },
+
+    "node_modules/negotiator": {
+
+      "version": "1.1.0",
+
+      "resolved": "https://registry.npmjs.org/negotiator/-/negotiator-1.1.0.tgz",
+
+      "integrity": "sha512-NMPBRMJgiQHjbd8phG3Vebdx4kZ1H121rbl5IkMqeOsahptB9BKo/d7oJ3zTXqTgagn2bWlNSXkh0QUGM31RYg==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "content-type": "^2.1.0"
+
+      },
+
+      "engines": {
+
+        "node": ">=18"
+
+      },
+
+      "funding": {
+
+        "type": "opencollective",
+
+        "url": "https://opencollective.com/express"
+
+      }
+
+    },
+
+    "node_modules/negotiator/node_modules/content-type": {
+
+      "version": "2.1.0",
+
+      "resolved": "https://registry.npmjs.org/content-type/-/content-type-2.1.0.tgz",
+
+      "integrity": "sha512-mj7UPXE0jaqaOsukNZRUEfEi2AcL7C/vwmwcHV0O97eO1E1pxBZuyjlZrx5seTaNBg1U6+o35wpa35Qfcc+7ag==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">=18"
+
+      },
+
+      "funding": {
+
+        "type": "opencollective",
+
+        "url": "https://opencollective.com/express"
+
+      }
+
+    },
+
+    "node_modules/object-inspect": {
+
+      "version": "1.13.4",
+
+      "resolved": "https://registry.npmjs.org/object-inspect/-/object-inspect-1.13.4.tgz",
+
+      "integrity": "sha512-W67iLl4J2EXEGTbfeHCffrjDfitvLANg0UlX3wFUUSTx92KXRFegMHUVgSqE+wvhAbi4WqjGg9czysTV2Epbew==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.4"
+
+      },
+
+      "funding": {
+
+        "url": "https://github.com/sponsors/ljharb"
+
+      }
+
+    },
+
+    "node_modules/on-finished": {
+
+      "version": "2.4.1",
+
+      "resolved": "https://registry.npmjs.org/on-finished/-/on-finished-2.4.1.tgz",
+
+      "integrity": "sha512-oVlzkg3ENAhCk2zdv7IJwd/QUD4z2RxRwpkcGY8psCVcCYZNq4wYnVWALHM+brtuJjePWiYF/ClmuDr8Ch5+kg==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "ee-first": "1.1.1"
+
+      },
+
+      "engines": {
+
+        "node": ">= 0.8"
+
+      }
+
+    },
+
+    "node_modules/once": {
+
+      "version": "1.4.0",
+
+      "resolved": "https://registry.npmjs.org/once/-/once-1.4.0.tgz",
+
+      "integrity": "sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==",
+
+      "license": "ISC",
+
+      "dependencies": {
+
+        "wrappy": "1"
+
+      }
+
+    },
+
+    "node_modules/parseurl": {
+
+      "version": "1.3.3",
+
+      "resolved": "https://registry.npmjs.org/parseurl/-/parseurl-1.3.3.tgz",
+
+      "integrity": "sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.8"
+
+      }
+
+    },
+
+    "node_modules/path-to-regexp": {
+
+      "version": "8.4.2",
+
+      "resolved": "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-8.4.2.tgz",
+
+      "integrity": "sha512-qRcuIdP69NPm4qbACK+aDogI5CBDMi1jKe0ry5rSQJz8JVLsC7jV8XpiJjGRLLol3N+R5ihGYcrPLTno6pAdBA==",
+
+      "license": "MIT",
+
+      "funding": {
+
+        "type": "opencollective",
+
+        "url": "https://opencollective.com/express"
+
+      }
+
+    },
+
+    "node_modules/proxy-addr": {
+
+      "version": "2.0.7",
+
+      "resolved": "https://registry.npmjs.org/proxy-addr/-/proxy-addr-2.0.7.tgz",
+
+      "integrity": "sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "forwarded": "0.2.0",
+
+        "ipaddr.js": "1.9.1"
+
+      },
+
+      "engines": {
+
+        "node": ">= 0.10"
+
+      }
+
+    },
+
+    "node_modules/qs": {
+
+      "version": "6.16.0",
+
+      "resolved": "https://registry.npmjs.org/qs/-/qs-6.16.0.tgz",
+
+      "integrity": "sha512-h6fhOIaRrID2CbEY2fqs+7t+UXZo+MLAnU5gRIq85uFtdiUPCdsApMlHhXogKVM4HM2DVbIjGNTTYH2OcmP1vA==",
+
+      "license": "BSD-3-Clause",
+
+      "dependencies": {
+
+        "es-define-property": "^1.0.1",
+
+        "side-channel": "^1.1.1"
+
+      },
+
+      "engines": {
+
+        "node": ">=0.6"
+
+      },
+
+      "funding": {
+
+        "url": "https://github.com/sponsors/ljharb"
+
+      }
+
+    },
+
+    "node_modules/range-parser": {
+
+      "version": "1.3.0",
+
+      "resolved": "https://registry.npmjs.org/range-parser/-/range-parser-1.3.0.tgz",
+
+      "integrity": "sha512-hek2mFQpPuI4E1BBKrSto+BU3e3x4xuarsbiwr3+lf7p44juvFMV0XFWQAP3xUyqXA4RrXLIoaSUGbSt056ZMw==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.6"
+
+      },
+
+      "funding": {
+
+        "type": "opencollective",
+
+        "url": "https://opencollective.com/express"
+
+      }
+
+    },
+
+    "node_modules/raw-body": {
+
+      "version": "3.0.2",
+
+      "resolved": "https://registry.npmjs.org/raw-body/-/raw-body-3.0.2.tgz",
+
+      "integrity": "sha512-K5zQjDllxWkf7Z5xJdV0/B0WTNqx6vxG70zJE4N0kBs4LovmEYWJzQGxC9bS9RAKu3bgM40lrd5zoLJ12MQ5BA==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "bytes": "~3.1.2",
+
+        "http-errors": "~2.0.1",
+
+        "iconv-lite": "~0.7.0",
+
+        "unpipe": "~1.0.0"
+
+      },
+
+      "engines": {
+
+        "node": ">= 0.10"
+
+      }
+
+    },
+
+    "node_modules/router": {
+
+      "version": "2.2.0",
+
+      "resolved": "https://registry.npmjs.org/router/-/router-2.2.0.tgz",
+
+      "integrity": "sha512-nLTrUKm2UyiL7rlhapu/Zl45FwNgkZGaCpZbIHajDYgwlJCOzLSk+cIPAnsEqV955GjILJnKbdQC1nVPz+gAYQ==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "debug": "^4.4.0",
+
+        "depd": "^2.0.0",
+
+        "is-promise": "^4.0.0",
+
+        "parseurl": "^1.3.3",
+
+        "path-to-regexp": "^8.0.0"
+
+      },
+
+      "engines": {
+
+        "node": ">= 18"
+
+      }
+
+    },
+
+    "node_modules/safer-buffer": {
+
+      "version": "2.1.2",
+
+      "resolved": "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz",
+
+      "integrity": "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==",
+
+      "license": "MIT"
+
+    },
+
+    "node_modules/send": {
+
+      "version": "1.2.1",
+
+      "resolved": "https://registry.npmjs.org/send/-/send-1.2.1.tgz",
+
+      "integrity": "sha512-1gnZf7DFcoIcajTjTwjwuDjzuz4PPcY2StKPlsGAQ1+YH20IRVrBaXSWmdjowTJ6u8Rc01PoYOGHXfP1mYcZNQ==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "debug": "^4.4.3",
+
+        "encodeurl": "^2.0.0",
+
+        "escape-html": "^1.0.3",
+
+        "etag": "^1.8.1",
+
+        "fresh": "^2.0.0",
+
+        "http-errors": "^2.0.1",
+
+        "mime-types": "^3.0.2",
+
+        "ms": "^2.1.3",
+
+        "on-finished": "^2.4.1",
+
+        "range-parser": "^1.2.1",
+
+        "statuses": "^2.0.2"
+
+      },
+
+      "engines": {
+
+        "node": ">= 18"
+
+      },
+
+      "funding": {
+
+        "type": "opencollective",
+
+        "url": "https://opencollective.com/express"
+
+      }
+
+    },
+
+    "node_modules/serve-static": {
+
+      "version": "2.2.1",
+
+      "resolved": "https://registry.npmjs.org/serve-static/-/serve-static-2.2.1.tgz",
+
+      "integrity": "sha512-xRXBn0pPqQTVQiC8wyQrKs2MOlX24zQ0POGaj0kultvoOCstBQM5yvOhAVSUwOMjQtTvsPWoNCHfPGwaaQJhTw==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "encodeurl": "^2.0.0",
+
+        "escape-html": "^1.0.3",
+
+        "parseurl": "^1.3.3",
+
+        "send": "^1.2.0"
+
+      },
+
+      "engines": {
+
+        "node": ">= 18"
+
+      },
+
+      "funding": {
+
+        "type": "opencollective",
+
+        "url": "https://opencollective.com/express"
+
+      }
+
+    },
+
+    "node_modules/setprototypeof": {
+
+      "version": "1.2.0",
+
+      "resolved": "https://registry.npmjs.org/setprototypeof/-/setprototypeof-1.2.0.tgz",
+
+      "integrity": "sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==",
+
+      "license": "ISC"
+
+    },
+
+    "node_modules/side-channel": {
+
+      "version": "1.1.1",
+
+      "resolved": "https://registry.npmjs.org/side-channel/-/side-channel-1.1.1.tgz",
+
+      "integrity": "sha512-6x6dK6zJdpTzF4sQeNYxwtvBzf6Eg4GtlesS94HOvTudUeyK2WXAaIfmDgsyslYrRBeFIlsi54AYsFGUuhmvrQ==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "es-errors": "^1.3.0",
+
+        "object-inspect": "^1.13.4",
+
+        "side-channel-list": "^1.0.1",
+
+        "side-channel-map": "^1.0.1",
+
+        "side-channel-weakmap": "^1.0.2"
+
+      },
+
+      "engines": {
+
+        "node": ">= 0.4"
+
+      },
+
+      "funding": {
+
+        "url": "https://github.com/sponsors/ljharb"
+
+      }
+
+    },
+
+    "node_modules/side-channel-list": {
+
+      "version": "1.0.1",
+
+      "resolved": "https://registry.npmjs.org/side-channel-list/-/side-channel-list-1.0.1.tgz",
+
+      "integrity": "sha512-mjn/0bi/oUURjc5Xl7IaWi/OJJJumuoJFQJfDDyO46+hBWsfaVM65TBHq2eoZBhzl9EchxOijpkbRC8SVBQU0w==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "es-errors": "^1.3.0",
+
+        "object-inspect": "^1.13.4"
+
+      },
+
+      "engines": {
+
+        "node": ">= 0.4"
+
+      },
+
+      "funding": {
+
+        "url": "https://github.com/sponsors/ljharb"
+
+      }
+
+    },
+
+    "node_modules/side-channel-map": {
+
+      "version": "1.0.1",
+
+      "resolved": "https://registry.npmjs.org/side-channel-map/-/side-channel-map-1.0.1.tgz",
+
+      "integrity": "sha512-VCjCNfgMsby3tTdo02nbjtM/ewra6jPHmpThenkTYh8pG9ucZ/1P8So4u4FGBek/BjpOVsDCMoLA/iuBKIFXRA==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "call-bound": "^1.0.2",
+
+        "es-errors": "^1.3.0",
+
+        "get-intrinsic": "^1.2.5",
+
+        "object-inspect": "^1.13.3"
+
+      },
+
+      "engines": {
+
+        "node": ">= 0.4"
+
+      },
+
+      "funding": {
+
+        "url": "https://github.com/sponsors/ljharb"
+
+      }
+
+    },
+
+    "node_modules/side-channel-weakmap": {
+
+      "version": "1.0.2",
+
+      "resolved": "https://registry.npmjs.org/side-channel-weakmap/-/side-channel-weakmap-1.0.2.tgz",
+
+      "integrity": "sha512-WPS/HvHQTYnHisLo9McqBHOJk2FkHO/tlpvldyrnem4aeQp4hai3gythswg6p01oSoTl58rcpiFAjF2br2Ak2A==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "call-bound": "^1.0.2",
+
+        "es-errors": "^1.3.0",
+
+        "get-intrinsic": "^1.2.5",
+
+        "object-inspect": "^1.13.3",
+
+        "side-channel-map": "^1.0.1"
+
+      },
+
+      "engines": {
+
+        "node": ">= 0.4"
+
+      },
+
+      "funding": {
+
+        "url": "https://github.com/sponsors/ljharb"
+
+      }
+
+    },
+
+    "node_modules/statuses": {
+
+      "version": "2.0.2",
+
+      "resolved": "https://registry.npmjs.org/statuses/-/statuses-2.0.2.tgz",
+
+      "integrity": "sha512-DvEy55V3DB7uknRo+4iOGT5fP1slR8wQohVdknigZPMpMstaKJQWhwiYBACJE3Ul2pTnATihhBYnRhZQHGBiRw==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.8"
+
+      }
+
+    },
+
+    "node_modules/toidentifier": {
+
+      "version": "1.0.1",
+
+      "resolved": "https://registry.npmjs.org/toidentifier/-/toidentifier-1.0.1.tgz",
+
+      "integrity": "sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">=0.6"
+
+      }
+
+    },
+
+    "node_modules/type-is": {
+
+      "version": "2.1.0",
+
+      "resolved": "https://registry.npmjs.org/type-is/-/type-is-2.1.0.tgz",
+
+      "integrity": "sha512-faYHw0anBbc/kWF3zFTEnxSFOAGUX9GFbOBthvDdLsIlEoWOFOtS0zgCiQYwIskL9iGXZL3kAXD8OoZ4GmMATA==",
+
+      "license": "MIT",
+
+      "dependencies": {
+
+        "content-type": "^2.0.0",
+
+        "media-typer": "^1.1.0",
+
+        "mime-types": "^3.0.0"
+
+      },
+
+      "engines": {
+
+        "node": ">= 18"
+
+      },
+
+      "funding": {
+
+        "type": "opencollective",
+
+        "url": "https://opencollective.com/express"
+
+      }
+
+    },
+
+    "node_modules/type-is/node_modules/content-type": {
+
+      "version": "2.1.0",
+
+      "resolved": "https://registry.npmjs.org/content-type/-/content-type-2.1.0.tgz",
+
+      "integrity": "sha512-mj7UPXE0jaqaOsukNZRUEfEi2AcL7C/vwmwcHV0O97eO1E1pxBZuyjlZrx5seTaNBg1U6+o35wpa35Qfcc+7ag==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">=18"
+
+      },
+
+      "funding": {
+
+        "type": "opencollective",
+
+        "url": "https://opencollective.com/express"
+
+      }
+
+    },
+
+    "node_modules/unpipe": {
+
+      "version": "1.0.0",
+
+      "resolved": "https://registry.npmjs.org/unpipe/-/unpipe-1.0.0.tgz",
+
+      "integrity": "sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.8"
+
+      }
+
+    },
+
+    "node_modules/vary": {
+
+      "version": "1.1.2",
+
+      "resolved": "https://registry.npmjs.org/vary/-/vary-1.1.2.tgz",
+
+      "integrity": "sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==",
+
+      "license": "MIT",
+
+      "engines": {
+
+        "node": ">= 0.8"
+
+      }
+
+    },
+
+    "node_modules/wrappy": {
+
+      "version": "1.0.2",
+
+      "resolved": "https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz",
+
+      "integrity": "sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==",
+
+      "license": "ISC"
+
+    }
+
+  }
+
+}
+
+Gemini נטפרי
+‫Gem בהתאמה אישית
+לא ציינת איזה טקסט, ערך או תלקה אתה מחפש בקובץ ה-JSON (הקובץ package-lock.json).
+
+כדי שאוכל להגיד לך באיזו שורה זה מופיע, אנא ציין מה בדיוק תרצה למצוא בקובץ.
+
+אני מחפשת איפה כתוב "type": "module"
+
+Gemini נטפרי
+‫Gem בהתאמה אישית
+הטקסט שמודבק כאן הוא קובץ package-lock.json ולא הקובץ package.json. הקובץ package-lock.json נוצר אוטומטית על ידי Node.js ומכיל רשימה של כל החבילות והגרסאות שהותקנו.
+
+ההגדרה "type": "module" אינה מופיעה בקובץ הזה. היא אמורה להופיע בקובץ בשם package.json (קובץ קצר יותר שנמצא בתיקיית השרש של הפרויקט).
+
+בקובץ package.json היא בדרך כלל מופיעה בחלק העליון, למשל בשורות 5–10:
+
+JSON
+{
+  "name": "lesson1",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": { ... }
+}
+איך לפתור את זה?
+
+פתח/י את הקובץ package.json (שים/י לב לא לפתוח את package-lock.json).
+
+אם השרת מציג שגיאה על module ובאפשרותך לעבור ל-import, אפשר להוסיף את השורה "type": "module", ישירות מתחת ל-"version".
+
+אם ברצונך להמשיך להשתמש ב-require, יש לוודא שהשורה "type": "module" לא קיימת בקובץ package.json (ואם היא קיימת – למחוק אותה).
